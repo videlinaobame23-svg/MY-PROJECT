@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Top Rated - IsokoRW</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span data-i18n="top_bar_promo">🚚 Free listing boost on your first ad</span>
+            <span class="top-bar-sep" data-i18n="top_bar_districts">Now live in 12 districts across Rwanda</span>
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../logo.jpeg" alt="IsokoRW Logo">
+            </div>
+            <div class="logo-text">
+                <h2>Isoko<span>RW</span></h2>
+                <span class="logo-tagline">Buy. Sell. Trust.</span>
+            </div>
+        </a>
+
+        <div class="header-search">
+            <select id="headerCategory" class="header-search-select">
+                <option value="" data-i18n="all_categories">All categories</option>
+                <option value="phones" data-i18n="cat_phones">Phones & Tablets</option>
+                <option value="electronics" data-i18n="cat_electronics">Electronics</option>
+                <option value="fashion" data-i18n="cat_fashion">Fashion</option>
+                <option value="vehicles" data-i18n="cat_vehicles">Vehicles</option>
+                <option value="real-estate" data-i18n="cat_real_estate">Real Estate</option>
+                <option value="home" data-i18n="cat_home">Home & Living</option>
+                <option value="gaming" data-i18n="cat_gaming">Gaming</option>
+                <option value="books" data-i18n="cat_books">Books</option>
+                <option value="beauty" data-i18n="cat_beauty">Beauty</option>
+                <option value="services" data-i18n="cat_services">Services</option>
+            </select>
+
+            <input type="text" placeholder="Search products, brands, or sellers..." id="headerSearch" data-i18n-placeholder="search_placeholder">
+
+            <button type="button" id="headerSearchButton" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+        </div>
+
+        <div class="header-actions">
+            <div class="location" title="Delivery location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span data-i18n="location">Kigali</span>
+                <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Sélecteur de langue -->
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="icon-button lang-btn" id="langBtn" title="Change language" aria-label="Change language">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span class="lang-current" id="langCurrent">EN</span>
+                </button>
+
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="en">
+                        <span class="lang-flag">🇬🇧</span>
+                        <div>
+                            <strong>English</strong>
+                            <small>English</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="rw">
+                        <span class="lang-flag">🇷🇼</span>
+                        <div>
+                            <strong>Kinyarwanda</strong>
+                            <small>Ikinyarwanda</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="fr">
+                        <span class="lang-flag">🇫🇷</span>
+                        <div>
+                            <strong>Français</strong>
+                            <small>French</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton Dark Mode -->
+            <button class="icon-button theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="icon-button" title="Notifications">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <a href="messages.html" class="icon-button" title="Messages">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                <span class="notification-badge">3</span>
+            </a>
+
+            <button class="icon-button" title="Favorites">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+
+            <a href="login.html" class="login-button" data-i18n="login">Log in</a>
+            <a href="register.html" class="signup-button" data-i18n="signup">Sign up</a>
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+
+        <button class="all-categories" id="allCategoriesToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <span data-i18n="all_categories">All Categories</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="deals">Deals</a>
+            <a href="new-arrivals.html" data-i18n="new_arrivals">New Arrivals</a>
+            <a href="top-rated.html" class="active" data-i18n="top_rated">Top Rated</a>
+            <a href="seller.html" data-i18n="sellers">Sellers</a>
+        </div>
+
+        <a href="post-ad.html" class="post-ad-button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="post_ad">Post an Ad</span>
+        </a>
+
+    </nav>
+
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="megaMenu">
+        <div class="mega-menu-inner">
+            <div class="mega-menu-header">
+                <h3 data-i18n="browse_categories">Browse all categories</h3>
+                <button class="mega-menu-close" id="megaMenuClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="mega-menu-grid">
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📱</div><div class="mega-cat-info"><strong data-i18n="cat_phones">Phones & Tablets</strong><span data-i18n="ads_3200">3,200 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💻</div><div class="mega-cat-info"><strong data-i18n="cat_electronics">Electronics</strong><span data-i18n="ads_2750">2,750 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">👕</div><div class="mega-cat-info"><strong data-i18n="cat_fashion">Fashion</strong><span data-i18n="ads_4100">4,100 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🚗</div><div class="mega-cat-info"><strong data-i18n="cat_vehicles">Vehicles</strong><span data-i18n="ads_1380">1,380 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🏠</div><div class="mega-cat-info"><strong data-i18n="cat_real_estate">Real Estate</strong><span data-i18n="ads_960">960 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🛋️</div><div class="mega-cat-info"><strong data-i18n="cat_home">Home & Living</strong><span data-i18n="ads_1540">1,540 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🎮</div><div class="mega-cat-info"><strong data-i18n="cat_gaming">Gaming</strong><span data-i18n="ads_880">880 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📚</div><div class="mega-cat-info"><strong data-i18n="cat_books">Books</strong><span data-i18n="ads_410">410 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💄</div><div class="mega-cat-info"><strong data-i18n="cat_beauty">Beauty</strong><span data-i18n="ads_720">720 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🔧</div><div class="mega-cat-info"><strong data-i18n="cat_services">Services</strong><span data-i18n="ads_1050">1,050 ads</span></div></a>
+            </div>
+
+            <div class="mega-menu-footer">
+                <a href="categories.html" class="mega-menu-all" data-i18n="view_all_categories">View all categories →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mega-menu-overlay" id="megaMenuOverlay"></div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" data-i18n="top_rated">Top Rated</span>
+        </div>
+    </div>
+
+
+    <!-- TOP RATED PAGE -->
+    <main class="products-page">
+
+        <div class="products-page-inner">
+
+            <!-- SIDEBAR FILTERS -->
+            <aside class="filters-sidebar" id="filtersSidebar">
+
+                <div class="filters-header">
+                    <h3 data-i18n="filters">Filters</h3>
+                    <button class="filters-clear" id="clearFilters" data-i18n="clear_all">Clear all</button>
+                </div>
+
+                <div class="filter-block">
+                    <h4 data-i18n="categories">Categories</h4>
+                    <ul class="filter-list">
+                        <li><label><input type="checkbox" name="cat" value="phones"> <span data-i18n="cat_phones">Phones & Tablets</span> <span>1,200</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="electronics"> <span data-i18n="cat_electronics">Electronics</span> <span>980</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="fashion"> <span data-i18n="cat_fashion">Fashion</span> <span>1,450</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="vehicles"> <span data-i18n="cat_vehicles">Vehicles</span> <span>540</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="real-estate"> <span data-i18n="cat_real_estate">Real Estate</span> <span>320</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="home"> <span data-i18n="cat_home">Home & Living</span> <span>610</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="gaming"> <span data-i18n="cat_gaming">Gaming</span> <span>390</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="books"> <span data-i18n="cat_books">Books</span> <span>120</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="beauty"> <span data-i18n="cat_beauty">Beauty</span> <span>280</span></label></li>
+                        <li><label><input type="checkbox" name="cat" value="services"> <span data-i18n="cat_services">Services</span> <span>420</span></label></li>
+                    </ul>
+                </div>
+
+                <div class="filter-block">
+                    <h4 data-i18n="min_rating">Minimum rating</h4>
+                    <ul class="filter-list">
+                        <li><label><input type="radio" name="rating" value="4.5" checked> ⭐ 4.5 & up</label></li>
+                        <li><label><input type="radio" name="rating" value="4"> ⭐ 4.0 & up</label></li>
+                        <li><label><input type="radio" name="rating" value="3.5"> ⭐ 3.5 & up</label></li>
+                        <li><label><input type="radio" name="rating" value="0"> <span data-i18n="all_ratings">All ratings</span></label></li>
+                    </ul>
+                </div>
+
+                <div class="filter-block">
+                    <h4 data-i18n="price_range">Price range (RWF)</h4>
+
+                    <div class="price-inputs">
+                        <input type="number" id="priceMin" placeholder="Min" value="0">
+                        <span>—</span>
+                        <input type="number" id="priceMax" placeholder="Max" value="20000000">
+                    </div>
+
+                    <input type="range" id="priceRange" min="0" max="20000000" step="50000" value="20000000" class="price-slider">
+
+                    <div class="price-range-labels">
+                        <span>0 RWF</span>
+                        <span>20M RWF</span>
+                    </div>
+                </div>
+
+                <div class="filter-block">
+                    <label class="filter-toggle">
+                        <input type="checkbox" id="verifiedOnly" checked>
+                        <span class="filter-toggle-track"></span>
+                        <span class="filter-toggle-label" data-i18n="verified_only">Verified sellers only</span>
+                    </label>
+                </div>
+
+                <button class="filters-apply" id="filtersApply" data-i18n="apply_filters">Apply filters</button>
+
+            </aside>
+
+
+            <!-- MAIN -->
+            <section class="products-main">
+
+                <div class="products-toolbar">
+
+                    <div class="products-results">
+                        <h1 data-i18n="top_rated_title">⭐ Top Rated Products</h1>
+                        <p data-i18n="top_rated_sub">Best rated items by buyers — <strong>6,400+</strong> highly rated listings</p>
+                    </div>
+
+                    <div class="products-controls">
+
+                        <div class="products-sort">
+                            <label for="sortSelect" data-i18n="sort_by">Sort by:</label>
+                            <select id="sortSelect">
+                                <option value="rating" selected data-i18n="sort_rating">Top rated</option>
+                                <option value="reviews" data-i18n="sort_reviews">Most reviews</option>
+                                <option value="price-asc" data-i18n="sort_price_asc">Price: low → high</option>
+                                <option value="price-desc" data-i18n="sort_price_desc">Price: high → low</option>
+                            </select>
+                        </div>
+
+                        <div class="products-view">
+                            <button class="view-btn active" data-view="grid" aria-label="Grid view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                            </button>
+                            <button class="view-btn" data-view="list" aria-label="List view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1.5"/><circle cx="3.5" cy="12" r="1.5"/><circle cx="3.5" cy="18" r="1.5"/></svg>
+                            </button>
+                        </div>
+
+                        <button class="filters-mobile-btn" id="filtersMobileBtn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                            <span data-i18n="filters">Filters</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="active-filters" id="activeFilters"></div>
+
+
+                <!-- PRODUCT GRID -->
+                <div class="products-grid-view" id="productsGrid">
+                    <!-- Rempli dynamiquement par app.js -->
+                </div>
+
+
+                <!-- PAGINATION -->
+                <div class="pagination">
+                    <button class="page-btn" disabled>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="page-number active">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">3</button>
+                    <span class="page-dots">…</span>
+                    <button class="page-number">320</button>
+                    <button class="page-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="../logo.jpeg" alt="IsokoRW Logo">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Isoko<span>RW</span></h2>
+                        <span class="footer-logo-tagline">Buy. Sell. Trust.</span>
+                    </div>
+                </a>
+                <p data-i18n="footer_description">The leading online marketplace in Rwanda for products and services.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <a href="../index.html" data-i18n="home">Home</a>
+                <a href="categories.html" data-i18n="categories">Categories</a>
+                <a href="account.html" data-i18n="my_account">My Account</a>
+                <a href="help.html" data-i18n="help_faq">Help / FAQ</a>
+                <a href="help.html" data-i18n="contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_buyers">For Buyers</h3>
+                <a href="help.html" data-i18n="how_it_works">How It Works</a>
+                <a href="help.html" data-i18n="safety_tips">Safety Tips</a>
+                <a href="help.html" data-i18n="return_policy">Return Policy</a>
+                <a href="help.html" data-i18n="payment_methods">Payment Methods</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_sellers">For Sellers</h3>
+                <a href="post-ad.html" data-i18n="become_seller">Become a Seller</a>
+                <a href="help.html" data-i18n="seller_guide">Seller Guide</a>
+                <a href="help.html" data-i18n="pricing">Pricing</a>
+                <a href="verification.html" data-i18n="verification">Verification</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="download_app">Download Our App</h3>
+                <a href="#" class="app-button">▶ Google Play</a>
+                <a href="#" class="app-button">🍎 App Store</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2026 IsokoRW. All rights reserved.</p>
+            <div class="language">
+                🌐 English
+                <span>⌄</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP + SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+
+    <!-- SCRIPTS -->
+    <script src="../data.js"></script>
+    <script src="../translations.js"></script>
+    <script src="../app.js"></script>
+    <script src="../script.js"></script>
+
+    <script>
+        /* ============ PRICE RANGE ============ */
+        const priceRange = document.getElementById("priceRange");
+        const priceMax = document.getElementById("priceMax");
+
+        if (priceRange && priceMax) {
+            priceRange.addEventListener("input", (e) => { priceMax.value = e.target.value; });
+            priceMax.addEventListener("input", (e) => {
+                if (e.target.value <= 20000000) priceRange.value = e.target.value;
+            });
+        }
+
+        /* ============ VIEW TOGGLE ============ */
+        const viewButtons = document.querySelectorAll(".view-btn");
+        const productsGrid = document.getElementById("productsGrid");
+
+        viewButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                viewButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                const view = btn.getAttribute("data-view");
+                productsGrid.classList.toggle("list-view", view === "list");
+            });
+        });
+
+        /* ============ CLEAR FILTERS ============ */
+        const clearBtn = document.getElementById("clearFilters");
+        if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-list input[type='checkbox']").forEach(cb => cb.checked = false);
+                document.getElementById("priceMin").value = 0;
+                document.getElementById("priceMax").value = 20000000;
+                document.getElementById("priceRange").value = 20000000;
+            });
+        }
+
+        /* ============ MOBILE FILTERS ============ */
+        const filtersMobileBtn = document.getElementById("filtersMobileBtn");
+        const filtersSidebar = document.getElementById("filtersSidebar");
+        const filtersApply = document.getElementById("filtersApply");
+
+        if (filtersMobileBtn && filtersSidebar) {
+            filtersMobileBtn.addEventListener("click", () => filtersSidebar.classList.toggle("open"));
+        }
+        if (filtersApply && filtersSidebar) {
+            filtersApply.addEventListener("click", () => filtersSidebar.classList.remove("open"));
+        }
+
+        /* ============ GRILLE PRODUITS DYNAMIQUE ============ */
+        document.addEventListener("DOMContentLoaded", () => {
+
+            if (typeof ISOKO !== "undefined") {
+                ISOKO.renderProducts("productsGrid", {
+                    filter: "top",
+                    sort: "rating",
+                    badge: "top"
+                });
+                ISOKO.markFavoritesAsActive();
+                ISOKO.updateFavoritesCount();
+            }
+
+            if (typeof applyLanguage === "function") {
+                const lang = localStorage.getItem("isokorw-lang") || "en";
+                applyLanguage(lang);
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

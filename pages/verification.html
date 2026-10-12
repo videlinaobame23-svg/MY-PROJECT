@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Get Verified - IsokoRW</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span data-i18n="top_bar_promo">🚚 Free listing boost on your first ad</span>
+            <span class="top-bar-sep" data-i18n="top_bar_districts">Now live in 12 districts across Rwanda</span>
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../logo.jpeg" alt="IsokoRW Logo">
+            </div>
+            <div class="logo-text">
+                <h2>Isoko<span>RW</span></h2>
+                <span class="logo-tagline">Buy. Sell. Trust.</span>
+            </div>
+        </a>
+
+        <div class="header-search">
+            <select id="headerCategory" class="header-search-select">
+                <option value="" data-i18n="all_categories">All categories</option>
+                <option value="phones" data-i18n="cat_phones">Phones & Tablets</option>
+                <option value="electronics" data-i18n="cat_electronics">Electronics</option>
+                <option value="fashion" data-i18n="cat_fashion">Fashion</option>
+                <option value="vehicles" data-i18n="cat_vehicles">Vehicles</option>
+                <option value="real-estate" data-i18n="cat_real_estate">Real Estate</option>
+                <option value="home" data-i18n="cat_home">Home & Living</option>
+                <option value="gaming" data-i18n="cat_gaming">Gaming</option>
+                <option value="books" data-i18n="cat_books">Books</option>
+                <option value="beauty" data-i18n="cat_beauty">Beauty</option>
+                <option value="services" data-i18n="cat_services">Services</option>
+            </select>
+
+            <input type="text" placeholder="Search products, brands, or sellers..." id="headerSearch" data-i18n-placeholder="search_placeholder">
+
+            <button type="button" id="headerSearchButton" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+        </div>
+
+        <div class="header-actions">
+            <div class="location" title="Delivery location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span data-i18n="location">Kigali</span>
+                <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Sélecteur de langue -->
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="icon-button lang-btn" id="langBtn" title="Change language" aria-label="Change language">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span class="lang-current" id="langCurrent">EN</span>
+                </button>
+
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="en">
+                        <span class="lang-flag">🇬🇧</span>
+                        <div>
+                            <strong>English</strong>
+                            <small>English</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="rw">
+                        <span class="lang-flag">🇷🇼</span>
+                        <div>
+                            <strong>Kinyarwanda</strong>
+                            <small>Ikinyarwanda</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="fr">
+                        <span class="lang-flag">🇫🇷</span>
+                        <div>
+                            <strong>Français</strong>
+                            <small>French</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton Dark Mode -->
+            <button class="icon-button theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="icon-button" title="Notifications">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <a href="messages.html" class="icon-button" title="Messages">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                <span class="notification-badge">3</span>
+            </a>
+
+            <button class="icon-button" title="Favorites">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+
+            <a href="login.html" class="login-button" data-i18n="login">Log in</a>
+            <a href="register.html" class="signup-button" data-i18n="signup">Sign up</a>
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+
+        <button class="all-categories" id="allCategoriesToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <span data-i18n="all_categories">All Categories</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="deals">Deals</a>
+            <a href="new-arrivals.html" data-i18n="new_arrivals">New Arrivals</a>
+            <a href="top-rated.html" data-i18n="top_rated">Top Rated</a>
+            <a href="seller.html" data-i18n="sellers">Sellers</a>
+        </div>
+
+        <a href="post-ad.html" class="post-ad-button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="post_ad">Post an Ad</span>
+        </a>
+
+    </nav>
+
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="megaMenu">
+        <div class="mega-menu-inner">
+            <div class="mega-menu-header">
+                <h3 data-i18n="browse_categories">Browse all categories</h3>
+                <button class="mega-menu-close" id="megaMenuClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="mega-menu-grid">
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📱</div><div class="mega-cat-info"><strong data-i18n="cat_phones">Phones & Tablets</strong><span data-i18n="ads_3200">3,200 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💻</div><div class="mega-cat-info"><strong data-i18n="cat_electronics">Electronics</strong><span data-i18n="ads_2750">2,750 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">👕</div><div class="mega-cat-info"><strong data-i18n="cat_fashion">Fashion</strong><span data-i18n="ads_4100">4,100 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🚗</div><div class="mega-cat-info"><strong data-i18n="cat_vehicles">Vehicles</strong><span data-i18n="ads_1380">1,380 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🏠</div><div class="mega-cat-info"><strong data-i18n="cat_real_estate">Real Estate</strong><span data-i18n="ads_960">960 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🛋️</div><div class="mega-cat-info"><strong data-i18n="cat_home">Home & Living</strong><span data-i18n="ads_1540">1,540 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🎮</div><div class="mega-cat-info"><strong data-i18n="cat_gaming">Gaming</strong><span data-i18n="ads_880">880 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📚</div><div class="mega-cat-info"><strong data-i18n="cat_books">Books</strong><span data-i18n="ads_410">410 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💄</div><div class="mega-cat-info"><strong data-i18n="cat_beauty">Beauty</strong><span data-i18n="ads_720">720 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🔧</div><div class="mega-cat-info"><strong data-i18n="cat_services">Services</strong><span data-i18n="ads_1050">1,050 ads</span></div></a>
+            </div>
+
+            <div class="mega-menu-footer">
+                <a href="categories.html" class="mega-menu-all" data-i18n="view_all_categories">View all categories →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mega-menu-overlay" id="megaMenuOverlay"></div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" data-i18n="verification">Verification</span>
+        </div>
+    </div>
+
+
+    <!-- VERIFICATION PAGE -->
+    <main class="verify-page">
+
+        <!-- HERO -->
+        <section class="verify-hero">
+
+            <div class="verify-hero-overlay"></div>
+
+            <div class="verify-hero-inner">
+
+                <div class="verify-hero-content">
+
+                    <span class="verify-hero-badge">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="verify_badge_program">Trusted Seller Program</span>
+                    </span>
+
+                    <h1 data-i18n="verify_hero_title">Get verified.<br>Win more buyers.</h1>
+
+                    <p data-i18n="verify_hero_sub">
+                        Verified sellers get <strong>4× more views</strong>, higher trust, and access
+                        to exclusive features. It takes less than 5 minutes to apply.
+                    </p>
+
+                    <div class="verify-hero-actions">
+                        <a href="#startVerification" class="verify-hero-btn verify-hero-btn-primary" data-i18n="verify_start">
+                            Start verification
+                        </a>
+                        <a href="#howItWorks" class="verify-hero-btn verify-hero-btn-secondary" data-i18n="verify_how">
+                            How it works
+                        </a>
+                    </div>
+
+
+                    <div class="verify-hero-badges">
+                        <div class="verify-hero-badge-item">
+                            <span>🔒</span>
+                            <div>
+                                <strong data-i18n="verify_badge_secure">Secure</strong>
+                                <small data-i18n="verify_badge_secure_desc">Your data is encrypted</small>
+                            </div>
+                        </div>
+
+                        <div class="verify-hero-badge-item">
+                            <span>⏱️</span>
+                            <div>
+                                <strong data-i18n="verify_badge_time">5 minutes</strong>
+                                <small data-i18n="verify_badge_time_desc">Quick application</small>
+                            </div>
+                        </div>
+
+                        <div class="verify-hero-badge-item">
+                            <span>✓</span>
+                            <div>
+                                <strong data-i18n="verify_badge_free">Free</strong>
+                                <small data-i18n="verify_badge_free_desc">No cost, ever</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- CARTE ILLUSTRATION -->
+                <div class="verify-hero-card">
+
+                    <div class="verify-hero-card-top">
+                        <div class="verify-hero-card-avatar">🏪</div>
+                        <div>
+                            <h3>Kigali Electronics</h3>
+                            <p data-i18n="verify_card_verified">Verified Seller</p>
+                        </div>
+                        <span class="verify-hero-card-badge">✓</span>
+                    </div>
+
+                    <div class="verify-hero-card-stats">
+                        <div>
+                            <strong>+320%</strong>
+                            <span data-i18n="verify_card_views">More views</span>
+                        </div>
+                        <div>
+                            <strong>4.7★</strong>
+                            <span data-i18n="verify_card_rating">Avg rating</span>
+                        </div>
+                    </div>
+
+                    <p class="verify-hero-card-note" data-i18n="verify_card_note">
+                        Since becoming verified, Kigali Electronics tripled their sales
+                        in less than 3 months.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+        <section class="verify-section" id="howItWorks">
+
+            <div class="verify-section-header">
+                <span class="verify-eyebrow" data-i18n="verify_why_eyebrow">Why get verified?</span>
+                <h2 data-i18n="verify_why_title">Benefits of being a verified seller</h2>
+                <p data-i18n="verify_why_sub">Stand out from the crowd and earn buyer trust instantly.</p>
+            </div>
+
+
+            <div class="verify-benefits">
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">📈</div>
+                    <h3 data-i18n="verify_benefit_1_title">Up to 4× more views</h3>
+                    <p data-i18n="verify_benefit_1_desc">Verified listings appear higher in search results and on the homepage.</p>
+                </div>
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">✓</div>
+                    <h3 data-i18n="verify_benefit_2_title">Verified badge</h3>
+                    <p data-i18n="verify_benefit_2_desc">A green checkmark on your profile and every listing you post.</p>
+                </div>
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">🤝</div>
+                    <h3 data-i18n="verify_benefit_3_title">More buyer trust</h3>
+                    <p data-i18n="verify_benefit_3_desc">Buyers are 3× more likely to contact verified sellers first.</p>
+                </div>
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">🚀</div>
+                    <h3 data-i18n="verify_benefit_4_title">Free monthly boost</h3>
+                    <p data-i18n="verify_benefit_4_desc">Get one free 7-day boost per month to promote your best ad.</p>
+                </div>
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">🎧</div>
+                    <h3 data-i18n="verify_benefit_5_title">Priority support</h3>
+                    <p data-i18n="verify_benefit_5_desc">Skip the queue with a dedicated seller support line.</p>
+                </div>
+
+                <div class="verify-benefit">
+                    <div class="verify-benefit-icon">💼</div>
+                    <h3 data-i18n="verify_benefit_6_title">Access to Pro tools</h3>
+                    <p data-i18n="verify_benefit_6_desc">Advanced analytics, bulk uploads, and ad scheduling.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="verify-section verify-how">
+
+            <div class="verify-section-header">
+                <span class="verify-eyebrow" data-i18n="verify_how_eyebrow">How it works</span>
+                <h2 data-i18n="verify_how_title">3 simple steps to get verified</h2>
+                <p data-i18n="verify_how_sub">The whole process takes less than 5 minutes.</p>
+            </div>
+
+
+            <div class="verify-steps">
+
+                <div class="verify-step-card">
+                    <div class="verify-step-num">1</div>
+                    <div class="verify-step-icon">🪪</div>
+                    <h3 data-i18n="verify_step_1_title">Upload your ID</h3>
+                    <p data-i18n="verify_step_1_desc">National ID, passport, or driver's license. Clear photo, front and back.</p>
+                </div>
+
+                <div class="verify-step-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+
+                <div class="verify-step-card">
+                    <div class="verify-step-num">2</div>
+                    <div class="verify-step-icon">🤳</div>
+                    <h3 data-i18n="verify_step_2_title">Take a selfie</h3>
+                    <p data-i18n="verify_step_2_desc">Hold your ID next to your face and take a clear selfie. No filters.</p>
+                </div>
+
+                <div class="verify-step-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+
+                <div class="verify-step-card">
+                    <div class="verify-step-num">3</div>
+                    <div class="verify-step-icon">✅</div>
+                    <h3 data-i18n="verify_step_3_title">Get verified</h3>
+                    <p data-i18n="verify_step_3_desc">Our team reviews your submission within 24 hours. You'll get an email.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMULAIRE -->
+        <section class="verify-section verify-form-section" id="startVerification">
+
+            <div class="verify-form-wrapper">
+
+                <div class="verify-form-info">
+                    <span class="verify-eyebrow" data-i18n="verify_form_eyebrow">Apply now</span>
+                    <h2 data-i18n="verify_form_title">Start your verification</h2>
+                    <p data-i18n="verify_form_sub">
+                        Fill in the form below and upload the required documents.
+                        Your data is encrypted and only visible to our verification team.
+                    </p>
+
+                    <ul class="verify-form-list">
+                        <li>
+                            <span class="verify-form-check">✓</span>
+                            <span data-i18n="verify_form_bullet_1">Your documents are never shared with other users</span>
+                        </li>
+                        <li>
+                            <span class="verify-form-check">✓</span>
+                            <span data-i18n="verify_form_bullet_2">All submissions reviewed within 24 hours</span>
+                        </li>
+                        <li>
+                            <span class="verify-form-check">✓</span>
+                            <span data-i18n="verify_form_bullet_3">You'll be notified by email and SMS</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <form class="verify-form" id="verifyForm">
+
+                    <div class="verify-form-block">
+                        <h3 data-i18n="verify_form_personal">1. Personal information</h3>
+
+                        <div class="verify-row">
+                            <div class="verify-field">
+                                <label for="verifyName" data-i18n="verify_form_name">Full legal name <span class="verify-req">*</span></label>
+                                <input type="text" id="verifyName" placeholder="As shown on your ID" data-i18n-placeholder="verify_form_name_placeholder" required>
+                            </div>
+
+                            <div class="verify-field">
+                                <label for="verifyPhone" data-i18n="verify_form_phone">Phone number <span class="verify-req">*</span></label>
+                                <input type="tel" id="verifyPhone" placeholder="+250 7XX XXX XXX" required>
+                            </div>
+                        </div>
+
+                        <div class="verify-field">
+                            <label for="verifyIdNumber" data-i18n="verify_form_id">ID number <span class="verify-req">*</span></label>
+                            <input type="text" id="verifyIdNumber" placeholder="e.g. 1 1990 8 1234567 1 23" required>
+                        </div>
+                    </div>
+
+
+                    <div class="verify-form-block">
+                        <h3 data-i18n="verify_form_upload">2. Upload your ID</h3>
+
+                        <div class="verify-uploads">
+
+                            <label class="verify-upload">
+                                <input type="file" accept="image/*" hidden>
+                                <div class="verify-upload-icon">🪪</div>
+                                <strong data-i18n="verify_form_front">Front of ID</strong>
+                                <span data-i18n="verify_form_file_hint">JPG or PNG · Max 5MB</span>
+                            </label>
+
+                            <label class="verify-upload">
+                                <input type="file" accept="image/*" hidden>
+                                <div class="verify-upload-icon">🪪</div>
+                                <strong data-i18n="verify_form_back">Back of ID</strong>
+                                <span data-i18n="verify_form_file_hint">JPG or PNG · Max 5MB</span>
+                            </label>
+
+                        </div>
+                    </div>
+
+
+                    <div class="verify-form-block">
+                        <h3 data-i18n="verify_form_selfie">3. Selfie with your ID</h3>
+
+                        <label class="verify-upload verify-upload-large">
+                            <input type="file" accept="image/*" hidden>
+                            <div class="verify-upload-icon">🤳</div>
+                            <strong data-i18n="verify_form_selfie_upload">Upload a selfie holding your ID</strong>
+                            <span data-i18n="verify_form_selfie_hint">Make sure your face and ID are clearly visible</span>
+                        </label>
+                    </div>
+
+
+                    <div class="verify-form-block">
+                        <h3><span data-i18n="verify_form_business">4. Business info</span> <span class="verify-optional" data-i18n="post_optional">(optional)</span></h3>
+
+                        <div class="verify-field">
+                            <label for="verifyBusiness" data-i18n="verify_form_business_name">Business name (if any)</label>
+                            <input type="text" id="verifyBusiness" placeholder="e.g. Kigali Electronics">
+                        </div>
+
+                        <div class="verify-field">
+                            <label for="verifyTin" data-i18n="verify_form_tin">TIN number (if any)</label>
+                            <input type="text" id="verifyTin" placeholder="Tax Identification Number">
+                        </div>
+                    </div>
+
+
+                    <label class="verify-checkbox">
+                        <input type="checkbox" id="verifyTerms" required>
+                        <span>
+                            <span data-i18n="verify_form_terms">I confirm that the information provided is accurate and I agree to the</span>
+                            <a href="#" class="auth-inline-link" data-i18n="register_terms_link">Seller Terms</a>
+                            <span data-i18n="register_terms_and">and</span>
+                            <a href="#" class="auth-inline-link" data-i18n="register_privacy_link">Privacy Policy</a>.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="verify-submit">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="verify_form_submit">Submit for verification</span>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ -->
+        <section class="verify-section">
+
+            <div class="verify-section-header">
+                <span class="verify-eyebrow" data-i18n="help_faq_eyebrow">FAQ</span>
+                <h2 data-i18n="help_faq_title">Frequently asked questions</h2>
+            </div>
+
+
+            <div class="verify-faq">
+
+                <details class="verify-faq-item">
+                    <summary data-i18n="verify_faq_q1">How long does verification take?</summary>
+                    <p data-i18n="verify_faq_a1">Most applications are reviewed within 24 hours. During peak times it may take up to 48 hours.</p>
+                </details>
+
+                <details class="verify-faq-item">
+                    <summary data-i18n="verify_faq_q2">Is my personal data safe?</summary>
+                    <p data-i18n="verify_faq_a2">Yes. All uploaded documents are encrypted and only visible to our verification team. We never share them with other users.</p>
+                </details>
+
+                <details class="verify-faq-item">
+                    <summary data-i18n="verify_faq_q3">What if I don't have a national ID?</summary>
+                    <p data-i18n="verify_faq_a3">You can use a valid passport or driver's license. If you don't have any of these, please contact support.</p>
+                </details>
+
+                <details class="verify-faq-item">
+                    <summary data-i18n="verify_faq_q4">Can I get verified as an individual seller?</summary>
+                    <p data-i18n="verify_faq_a4">Absolutely. Verification is available to both individuals and businesses.</p>
+                </details>
+
+                <details class="verify-faq-item">
+                    <summary data-i18n="verify_faq_q5">Can my verification be revoked?</summary>
+                    <p data-i18n="verify_faq_a5">Yes. If you violate our selling rules or receive multiple valid complaints, your verified status may be removed.</p>
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="verify-cta">
+
+            <div class="verify-cta-inner">
+                <h2 data-i18n="verify_cta_title">Ready to become a trusted seller?</h2>
+                <p data-i18n="verify_cta_sub">Join over 6,400 verified sellers on IsokoRW.</p>
+                <a href="#startVerification" class="verify-cta-btn">
+                    <span data-i18n="verify_start">Start verification</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="../logo.jpeg" alt="IsokoRW Logo">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Isoko<span>RW</span></h2>
+                        <span class="footer-logo-tagline">Buy. Sell. Trust.</span>
+                    </div>
+                </a>
+                <p data-i18n="footer_description">The leading online marketplace in Rwanda for products and services.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <a href="../index.html" data-i18n="home">Home</a>
+                <a href="categories.html" data-i18n="categories">Categories</a>
+                <a href="account.html" data-i18n="my_account">My Account</a>
+                <a href="help.html" data-i18n="help_faq">Help / FAQ</a>
+                <a href="help.html" data-i18n="contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_buyers">For Buyers</h3>
+                <a href="help.html" data-i18n="how_it_works">How It Works</a>
+                <a href="help.html" data-i18n="safety_tips">Safety Tips</a>
+                <a href="help.html" data-i18n="return_policy">Return Policy</a>
+                <a href="help.html" data-i18n="payment_methods">Payment Methods</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_sellers">For Sellers</h3>
+                <a href="post-ad.html" data-i18n="become_seller">Become a Seller</a>
+                <a href="help.html" data-i18n="seller_guide">Seller Guide</a>
+                <a href="help.html" data-i18n="pricing">Pricing</a>
+                <a href="verification.html" data-i18n="verification">Verification</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="download_app">Download Our App</h3>
+                <a href="#" class="app-button">▶ Google Play</a>
+                <a href="#" class="app-button">🍎 App Store</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2026 IsokoRW. All rights reserved.</p>
+            <div class="language">
+                🌐 English
+                <span>⌄</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP + SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
+
+    <script>
+        /* ============ FORM SUBMIT ============ */
+        const verifyForm = document.getElementById("verifyForm");
+
+        if (verifyForm) {
+            verifyForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById("verifyName").value.trim();
+                const phone = document.getElementById("verifyPhone").value.trim();
+                const idNumber = document.getElementById("verifyIdNumber").value.trim();
+                const terms = document.getElementById("verifyTerms").checked;
+
+                if (!name || !phone || !idNumber) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+
+                if (!terms) {
+                    alert("Please accept the Seller Terms and Privacy Policy.");
+                    return;
+                }
+
+                alert("🎉 Your verification request has been submitted!\nWe'll review it within 24 hours and email you the result.");
+            });
+        }
+
+
+        /* ============ SMOOTH SCROLL ============ */
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener("click", (e) => {
+                const target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

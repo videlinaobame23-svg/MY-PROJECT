@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Help & Support - IsokoRW</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span data-i18n="top_bar_promo">🚚 Free listing boost on your first ad</span>
+            <span class="top-bar-sep" data-i18n="top_bar_districts">Now live in 12 districts across Rwanda</span>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../logo.jpeg" alt="IsokoRW Logo">
+            </div>
+
+            <div class="logo-text">
+                <h2>Isoko<span>RW</span></h2>
+                <span class="logo-tagline">Buy. Sell. Trust.</span>
+            </div>
+        </a>
+
+        <div class="header-search">
+
+            <select id="headerCategory" class="header-search-select">
+                <option value="" data-i18n="all_categories">All categories</option>
+                <option value="phones" data-i18n="cat_phones">Phones & Tablets</option>
+                <option value="electronics" data-i18n="cat_electronics">Electronics</option>
+                <option value="fashion" data-i18n="cat_fashion">Fashion</option>
+                <option value="vehicles" data-i18n="cat_vehicles">Vehicles</option>
+                <option value="real-estate" data-i18n="cat_real_estate">Real Estate</option>
+                <option value="home" data-i18n="cat_home">Home & Living</option>
+                <option value="gaming" data-i18n="cat_gaming">Gaming</option>
+                <option value="books" data-i18n="cat_books">Books</option>
+                <option value="beauty" data-i18n="cat_beauty">Beauty</option>
+                <option value="services" data-i18n="cat_services">Services</option>
+            </select>
+
+            <input
+                type="text"
+                placeholder="Search products, brands, or sellers..."
+                id="headerSearch"
+                data-i18n-placeholder="search_placeholder"
+            >
+
+            <button type="button" id="headerSearchButton" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+
+        </div>
+
+        <div class="header-actions">
+
+            <div class="location" title="Delivery location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span data-i18n="location">Kigali</span>
+                <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Sélecteur de langue -->
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="icon-button lang-btn" id="langBtn" title="Change language" aria-label="Change language">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span class="lang-current" id="langCurrent">EN</span>
+                </button>
+
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="en">
+                        <span class="lang-flag">🇬🇧</span>
+                        <div>
+                            <strong>English</strong>
+                            <small>English</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="rw">
+                        <span class="lang-flag">🇷🇼</span>
+                        <div>
+                            <strong>Kinyarwanda</strong>
+                            <small>Ikinyarwanda</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="fr">
+                        <span class="lang-flag">🇫🇷</span>
+                        <div>
+                            <strong>Français</strong>
+                            <small>French</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton Dark Mode -->
+            <button class="icon-button theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="icon-button" title="Notifications">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <a href="messages.html" class="icon-button" title="Messages">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                <span class="notification-badge">3</span>
+            </a>
+
+            <button class="icon-button" title="Favorites">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+
+            <a href="login.html" class="login-button" data-i18n="login">Log in</a>
+            <a href="register.html" class="signup-button" data-i18n="signup">Sign up</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav class="navigation">
+
+        <button class="all-categories" id="allCategoriesToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <span data-i18n="all_categories">All Categories</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="deals">Deals</a>
+            <a href="new-arrivals.html" data-i18n="new_arrivals">New Arrivals</a>
+            <a href="top-rated.html" data-i18n="top_rated">Top Rated</a>
+            <a href="seller.html" data-i18n="sellers">Sellers</a>
+        </div>
+
+        <a href="post-ad.html" class="post-ad-button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="post_ad">Post an Ad</span>
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MEGA MENU
+    ====================================================== -->
+
+    <div class="mega-menu" id="megaMenu">
+
+        <div class="mega-menu-inner">
+
+            <div class="mega-menu-header">
+                <h3 data-i18n="browse_categories">Browse all categories</h3>
+                <button class="mega-menu-close" id="megaMenuClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="mega-menu-grid">
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">📱</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_phones">Phones & Tablets</strong>
+                        <span data-i18n="ads_3200">3,200 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">💻</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_electronics">Electronics</strong>
+                        <span data-i18n="ads_2750">2,750 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">👕</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_fashion">Fashion</strong>
+                        <span data-i18n="ads_4100">4,100 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">🚗</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_vehicles">Vehicles</strong>
+                        <span data-i18n="ads_1380">1,380 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">🏠</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_real_estate">Real Estate</strong>
+                        <span data-i18n="ads_960">960 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">🛋️</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_home">Home & Living</strong>
+                        <span data-i18n="ads_1540">1,540 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">🎮</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_gaming">Gaming</strong>
+                        <span data-i18n="ads_880">880 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">📚</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_books">Books</strong>
+                        <span data-i18n="ads_410">410 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">💄</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_beauty">Beauty</strong>
+                        <span data-i18n="ads_720">720 ads</span>
+                    </div>
+                </a>
+
+                <a href="products.html" class="mega-cat">
+                    <div class="mega-cat-icon">🔧</div>
+                    <div class="mega-cat-info">
+                        <strong data-i18n="cat_services">Services</strong>
+                        <span data-i18n="ads_1050">1,050 ads</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="mega-menu-footer">
+                <a href="categories.html" class="mega-menu-all" data-i18n="view_all_categories">
+                    View all categories →
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mega-menu-overlay" id="megaMenuOverlay"></div>
+
+
+    <!-- =====================================================
+         BREADCRUMB
+    ====================================================== -->
+
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" data-i18n="help_breadcrumb">Help & Support</span>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         HELP PAGE
+    ====================================================== -->
+
+    <main class="help-page">
+
+
+        <!-- ============ HERO ============ -->
+
+        <section class="help-hero">
+
+            <div class="help-hero-overlay"></div>
+
+            <div class="help-hero-inner">
+
+                <span class="help-hero-eyebrow" data-i18n="help_hero_eyebrow">Help Center</span>
+
+                <h1 data-i18n="help_hero_title">How can we help you today?</h1>
+
+                <p data-i18n="help_hero_sub">Search our help articles or browse the topics below.</p>
+
+                <div class="help-search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" placeholder="Search help articles..." data-i18n-placeholder="help_search_placeholder">
+                    <button type="button" data-i18n="search">Search</button>
+                </div>
+
+                <div class="help-popular">
+                    <span data-i18n="popular">Popular:</span>
+                    <a href="#faq" data-i18n="help_pop_1">How to post an ad</a>
+                    <a href="#faq" data-i18n="help_pop_2">Payment methods</a>
+                    <a href="#faq" data-i18n="help_pop_3">Safety tips</a>
+                    <a href="#faq" data-i18n="help_pop_4">Return policy</a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ CATEGORIES D'AIDE ============ -->
+
+        <section class="help-section">
+
+            <div class="help-section-header">
+                <span class="help-eyebrow" data-i18n="help_cat_eyebrow">Browse topics</span>
+                <h2 data-i18n="help_cat_title">Help categories</h2>
+                <p data-i18n="help_cat_sub">Choose a category to find the answers you need.</p>
+            </div>
+
+
+            <div class="help-categories">
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">🛒</div>
+                    <h3 data-i18n="help_cat_buying">Buying</h3>
+                    <p data-i18n="help_cat_buying_desc">How to buy, pay, and receive items</p>
+                    <span data-i18n="help_cat_buying_count">12 articles →</span>
+                </a>
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">💼</div>
+                    <h3 data-i18n="help_cat_selling">Selling</h3>
+                    <p data-i18n="help_cat_selling_desc">Post ads, manage listings, boost sales</p>
+                    <span data-i18n="help_cat_selling_count">15 articles →</span>
+                </a>
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">🛡️</div>
+                    <h3 data-i18n="help_cat_safety">Safety & Trust</h3>
+                    <p data-i18n="help_cat_safety_desc">Scams, verification, and reporting</p>
+                    <span data-i18n="help_cat_safety_count">8 articles →</span>
+                </a>
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">💳</div>
+                    <h3 data-i18n="help_cat_payments">Payments</h3>
+                    <p data-i18n="help_cat_payments_desc">MoMo, cash, bank transfers</p>
+                    <span data-i18n="help_cat_payments_count">6 articles →</span>
+                </a>
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">🚚</div>
+                    <h3 data-i18n="help_cat_delivery">Delivery</h3>
+                    <p data-i18n="help_cat_delivery_desc">Shipping, pickup, and tracking</p>
+                    <span data-i18n="help_cat_delivery_count">5 articles →</span>
+                </a>
+
+                <a href="#faq" class="help-cat-card">
+                    <div class="help-cat-icon">👤</div>
+                    <h3 data-i18n="help_cat_account">My Account</h3>
+                    <p data-i18n="help_cat_account_desc">Profile, security, and settings</p>
+                    <span data-i18n="help_cat_account_count">9 articles →</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ FAQ ============ -->
+
+        <section class="help-section help-faq-section" id="faq">
+
+            <div class="help-section-header">
+                <span class="help-eyebrow">FAQ</span>
+                <h2 data-i18n="help_faq_title">Frequently asked questions</h2>
+                <p data-i18n="help_faq_sub">The most common questions from our community.</p>
+            </div>
+
+
+            <div class="help-faq">
+
+                <!-- CATÉGORIE : ACHETER -->
+                <div class="help-faq-group">
+                    <h3 class="help-faq-group-title" data-i18n="help_faq_buying_title">🛒 Buying</h3>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_buy_1">How do I buy something on IsokoRW?</summary>
+                        <p data-i18n="help_a_buy_1">Browse the category or search bar to find the item. Contact the seller via message or phone, agree on the price, and meet in a safe public place to complete the transaction. Never send money in advance.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_buy_2">Can I negotiate the price?</summary>
+                        <p data-i18n="help_a_buy_2">Yes. Many sellers mark items as "negotiable" and are open to offers. Use the message feature to politely negotiate before meeting.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_buy_3">What if the item is not as described?</summary>
+                        <p data-i18n="help_a_buy_3">Always inspect the item carefully before paying. If you notice a problem after purchase, contact the seller first. If unresolved, report the issue to our support team.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_buy_4">How do I save an item for later?</summary>
+                        <p data-i18n="help_a_buy_4">Click the ❤️ heart icon on any product card. It will be added to your Favorites so you can easily find it again from your account.</p>
+                    </details>
+                </div>
+
+
+                <!-- CATÉGORIE : VENDRE -->
+                <div class="help-faq-group">
+                    <h3 class="help-faq-group-title" data-i18n="help_faq_selling_title">💼 Selling</h3>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_sell_1">How do I post an ad?</summary>
+                        <p data-i18n="help_a_sell_1">Click "Post an Ad" in the header, choose a category, add clear photos and a detailed description, set your price and location, then publish. Your ad goes live within minutes.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_sell_2">Is posting an ad free?</summary>
+                        <p data-i18n="help_a_sell_2">Yes, posting standard ads is completely free on IsokoRW. You can optionally pay to "boost" your ad for extra visibility.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_sell_3">How can I sell faster?</summary>
+                        <p data-i18n="help_a_sell_3">Use clear photos taken in daylight, write a detailed title and description, set a fair price, and consider boosting your ad. Verified sellers also get up to 4× more views.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_sell_4">How many ads can I post?</summary>
+                        <p data-i18n="help_a_sell_4">You can post unlimited ads as a verified seller. New accounts may be limited to a few active ads until they are verified.</p>
+                    </details>
+                </div>
+
+
+                <!-- CATÉGORIE : SÉCURITÉ -->
+                <div class="help-faq-group">
+                    <h3 class="help-faq-group-title" data-i18n="help_faq_safety_title">🛡️ Safety & Trust</h3>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_safe_1">How do I know a seller is trustworthy?</summary>
+                        <p data-i18n="help_a_safe_1">Look for the green "✓ Verified" badge. Verified sellers have completed ID and phone verification with our team. Check their ratings and reviews from other buyers too.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_safe_2">What should I do to stay safe?</summary>
+                        <p data-i18n="help_a_safe_2">Always meet in a public place, bring a friend if possible, inspect the item before paying, never send money in advance, and trust your instincts. If something feels wrong, walk away.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_safe_3">How do I report a scam or suspicious seller?</summary>
+                        <p data-i18n="help_a_safe_3">Click the "Report" button on the listing or profile page, or contact our support team directly via the contact form below. We investigate every report within 24 hours.</p>
+                    </details>
+                </div>
+
+
+                <!-- CATÉGORIE : PAIEMENT -->
+                <div class="help-faq-group">
+                    <h3 class="help-faq-group-title" data-i18n="help_faq_payments_title">💳 Payments</h3>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_pay_1">What payment methods are accepted?</summary>
+                        <p data-i18n="help_a_pay_1">It depends on the seller. Most accept cash on delivery, MoMo (MTN/Airtel), or bank transfer. Always confirm with the seller before meeting.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_pay_2">Does IsokoRW handle payments?</summary>
+                        <p data-i18n="help_a_pay_2">Not yet. Secure online payments are coming soon. For now, transactions happen directly between buyer and seller.</p>
+                    </details>
+                </div>
+
+
+                <!-- CATÉGORIE : COMPTE -->
+                <div class="help-faq-group">
+                    <h3 class="help-faq-group-title" data-i18n="help_faq_account_title">👤 My Account</h3>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_acc_1">How do I reset my password?</summary>
+                        <p data-i18n="help_a_acc_1">Click "Forgot password?" on the login page and follow the instructions sent to your email. You'll receive a link to create a new password.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_acc_2">How do I delete my account?</summary>
+                        <p data-i18n="help_a_acc_2">Go to My Account → Security → Delete account. Note that this action is permanent and will remove all your listings, messages, and data.</p>
+                    </details>
+
+                    <details class="help-faq-item">
+                        <summary data-i18n="help_q_acc_3">How do I become a verified seller?</summary>
+                        <p data-i18n="help_a_acc_3">Go to the Verification page from your account or the footer, fill in the form, upload your ID and a selfie. Our team reviews within 24 hours.</p>
+                    </details>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ CONTACT ============ -->
+
+        <section class="help-section help-contact-section">
+
+            <div class="help-contact-wrapper">
+
+                <div class="help-contact-info">
+
+                    <span class="help-eyebrow" data-i18n="help_contact_eyebrow">Still need help?</span>
+                    <h2 data-i18n="help_contact_title">Contact our support team</h2>
+                    <p data-i18n="help_contact_sub">
+                        Our local team is available 24/7 in Kinyarwanda, English and French.
+                        We usually respond within a few hours.
+                    </p>
+
+                    <div class="help-contact-methods">
+
+                        <div class="help-contact-method">
+                            <div class="help-contact-icon">💬</div>
+                            <div>
+                                <strong data-i18n="help_contact_chat">Live chat</strong>
+                                <span data-i18n="help_contact_chat_desc">Fastest way · 24/7</span>
+                            </div>
+                        </div>
+
+                        <div class="help-contact-method">
+                            <div class="help-contact-icon">✉️</div>
+                            <div>
+                                <strong>support@isokorw.rw</strong>
+                                <span data-i18n="help_contact_email_desc">Response within 24h</span>
+                            </div>
+                        </div>
+
+                        <div class="help-contact-method">
+                            <div class="help-contact-icon">📞</div>
+                            <div>
+                                <strong>+250 788 000 000</strong>
+                                <span data-i18n="help_contact_phone_desc">Mon–Sun · 8:00–20:00</span>
+                            </div>
+                        </div>
+
+                        <div class="help-contact-method">
+                            <div class="help-contact-icon">📍</div>
+                            <div>
+                                <strong data-i18n="help_contact_address">KG 11 Ave, Kigali</strong>
+                                <span data-i18n="help_contact_address_desc">Head office · Gasabo</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORMULAIRE -->
+
+                <form class="help-contact-form" id="helpForm">
+
+                    <h3 data-i18n="help_form_title">Send us a message</h3>
+
+                    <div class="help-form-row">
+                        <div class="help-form-field">
+                            <label for="helpName" data-i18n="help_form_name">Full name <span class="help-req">*</span></label>
+                            <input type="text" id="helpName" placeholder="Your name" data-i18n-placeholder="help_form_name_placeholder" required>
+                        </div>
+
+                        <div class="help-form-field">
+                            <label for="helpEmail" data-i18n="help_form_email">Email <span class="help-req">*</span></label>
+                            <input type="email" id="helpEmail" placeholder="you@example.com" data-i18n-placeholder="help_form_email_placeholder" required>
+                        </div>
+                    </div>
+
+                    <div class="help-form-field">
+                        <label for="helpSubject" data-i18n="help_form_subject">Subject <span class="help-req">*</span></label>
+                        <select id="helpSubject" required>
+                            <option value="" data-i18n="help_form_subject_placeholder">Choose a topic</option>
+                            <option data-i18n="help_form_subject_1">Problem with my account</option>
+                            <option data-i18n="help_form_subject_2">Problem with a listing</option>
+                            <option data-i18n="help_form_subject_3">Report a seller</option>
+                            <option data-i18n="help_form_subject_4">Payment issue</option>
+                            <option data-i18n="help_form_subject_5">Verification question</option>
+                            <option data-i18n="help_form_subject_6">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="help-form-field">
+                        <label for="helpMessage" data-i18n="help_form_message">Message <span class="help-req">*</span></label>
+                        <textarea id="helpMessage" rows="5" placeholder="Describe your issue in detail..." data-i18n-placeholder="help_form_message_placeholder" required></textarea>
+                    </div>
+
+                    <label class="help-checkbox">
+                        <input type="checkbox" required>
+                        <span data-i18n="help_form_agree">I agree to be contacted by the IsokoRW support team.</span>
+                    </label>
+
+                    <button type="submit" class="help-submit">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        <span data-i18n="help_form_send">Send message</span>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============ CTA ============ -->
+
+        <section class="help-cta">
+
+            <div class="help-cta-inner">
+
+                <h2 data-i18n="help_cta_title">Can't find what you're looking for?</h2>
+                <p data-i18n="help_cta_sub">Browse our full help center for more articles and guides.</p>
+
+                <div class="help-cta-actions">
+                    <a href="#faq" class="help-cta-btn help-cta-btn-primary" data-i18n="help_cta_browse">
+                        Browse FAQ
+                    </a>
+                    <a href="post-ad.html" class="help-cta-btn help-cta-btn-secondary" data-i18n="post_ad">
+                        Post an Ad
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="../logo.jpeg" alt="IsokoRW Logo">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Isoko<span>RW</span></h2>
+                        <span class="footer-logo-tagline">Buy. Sell. Trust.</span>
+                    </div>
+                </a>
+
+                <p data-i18n="footer_description">The leading online marketplace in Rwanda for products and services.</p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <a href="../index.html" data-i18n="home">Home</a>
+                <a href="categories.html" data-i18n="categories">Categories</a>
+                <a href="account.html" data-i18n="my_account">My Account</a>
+                <a href="help.html" data-i18n="help_faq">Help / FAQ</a>
+                <a href="help.html" data-i18n="contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_buyers">For Buyers</h3>
+                <a href="help.html" data-i18n="how_it_works">How It Works</a>
+                <a href="help.html" data-i18n="safety_tips">Safety Tips</a>
+                <a href="help.html" data-i18n="return_policy">Return Policy</a>
+                <a href="help.html" data-i18n="payment_methods">Payment Methods</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_sellers">For Sellers</h3>
+                <a href="post-ad.html" data-i18n="become_seller">Become a Seller</a>
+                <a href="help.html" data-i18n="seller_guide">Seller Guide</a>
+                <a href="help.html" data-i18n="pricing">Pricing</a>
+                <a href="verification.html" data-i18n="verification">Verification</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="download_app">Download Our App</h3>
+                <a href="#" class="app-button">▶ Google Play</a>
+                <a href="#" class="app-button">🍎 App Store</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2026 IsokoRW. All rights reserved.</p>
+            <div class="language">
+                🌐 English
+                <span>⌄</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP + SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
+
+    <script>
+        /* ============ SMOOTH SCROLL ============ */
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener("click", (e) => {
+                const target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+
+        /* ============ CONTACT FORM SUBMIT ============ */
+        const helpForm = document.getElementById("helpForm");
+
+        if (helpForm) {
+            helpForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById("helpName").value.trim();
+                const email = document.getElementById("helpEmail").value.trim();
+                const subject = document.getElementById("helpSubject").value;
+                const message = document.getElementById("helpMessage").value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+
+                alert(`✓ Message sent!\n\nThank you ${name}, our support team will get back to you at ${email} within 24 hours.`);
+                helpForm.reset();
+            });
+        }
+    </script>
+
+</body>
+
+</html>

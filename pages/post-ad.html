@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Post an Ad - IsokoRW</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span data-i18n="top_bar_promo">🚚 Free listing boost on your first ad</span>
+            <span class="top-bar-sep" data-i18n="top_bar_districts">Now live in 12 districts across Rwanda</span>
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../logo.jpeg" alt="IsokoRW Logo">
+            </div>
+
+            <div class="logo-text">
+                <h2>Isoko<span>RW</span></h2>
+                <span class="logo-tagline">Buy. Sell. Trust.</span>
+            </div>
+        </a>
+
+        <div class="header-search">
+
+            <select id="headerCategory" class="header-search-select">
+                <option value="" data-i18n="all_categories">All categories</option>
+                <option value="phones" data-i18n="cat_phones">Phones & Tablets</option>
+                <option value="electronics" data-i18n="cat_electronics">Electronics</option>
+                <option value="fashion" data-i18n="cat_fashion">Fashion</option>
+                <option value="vehicles" data-i18n="cat_vehicles">Vehicles</option>
+                <option value="real-estate" data-i18n="cat_real_estate">Real Estate</option>
+                <option value="home" data-i18n="cat_home">Home & Living</option>
+                <option value="gaming" data-i18n="cat_gaming">Gaming</option>
+                <option value="books" data-i18n="cat_books">Books</option>
+                <option value="beauty" data-i18n="cat_beauty">Beauty</option>
+                <option value="services" data-i18n="cat_services">Services</option>
+            </select>
+
+            <input
+                type="text"
+                placeholder="Search products, brands, or sellers..."
+                id="headerSearch"
+                data-i18n-placeholder="search_placeholder"
+            >
+
+            <button type="button" id="headerSearchButton" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+
+        </div>
+
+        <div class="header-actions">
+
+            <div class="location" title="Delivery location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span data-i18n="location">Kigali</span>
+                <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Sélecteur de langue -->
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="icon-button lang-btn" id="langBtn" title="Change language" aria-label="Change language">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span class="lang-current" id="langCurrent">EN</span>
+                </button>
+
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="en">
+                        <span class="lang-flag">🇬🇧</span>
+                        <div>
+                            <strong>English</strong>
+                            <small>English</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="rw">
+                        <span class="lang-flag">🇷🇼</span>
+                        <div>
+                            <strong>Kinyarwanda</strong>
+                            <small>Ikinyarwanda</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="fr">
+                        <span class="lang-flag">🇫🇷</span>
+                        <div>
+                            <strong>Français</strong>
+                            <small>French</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton Dark Mode -->
+            <button class="icon-button theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="icon-button" title="Notifications">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <a href="messages.html" class="icon-button" title="Messages">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                <span class="notification-badge">3</span>
+            </a>
+
+            <button class="icon-button" title="Favorites">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+
+            <a href="login.html" class="login-button" data-i18n="login">Log in</a>
+            <a href="register.html" class="signup-button" data-i18n="signup">Sign up</a>
+
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+
+        <button class="all-categories" id="allCategoriesToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <span data-i18n="all_categories">All Categories</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="deals">Deals</a>
+            <a href="new-arrivals.html" data-i18n="new_arrivals">New Arrivals</a>
+            <a href="top-rated.html" data-i18n="top_rated">Top Rated</a>
+            <a href="seller.html" data-i18n="sellers">Sellers</a>
+        </div>
+
+        <a href="post-ad.html" class="post-ad-button active">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="post_ad">Post an Ad</span>
+        </a>
+
+    </nav>
+
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="megaMenu">
+        <div class="mega-menu-inner">
+            <div class="mega-menu-header">
+                <h3 data-i18n="browse_categories">Browse all categories</h3>
+                <button class="mega-menu-close" id="megaMenuClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="mega-menu-grid">
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📱</div><div class="mega-cat-info"><strong data-i18n="cat_phones">Phones & Tablets</strong><span data-i18n="ads_3200">3,200 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💻</div><div class="mega-cat-info"><strong data-i18n="cat_electronics">Electronics</strong><span data-i18n="ads_2750">2,750 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">👕</div><div class="mega-cat-info"><strong data-i18n="cat_fashion">Fashion</strong><span data-i18n="ads_4100">4,100 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🚗</div><div class="mega-cat-info"><strong data-i18n="cat_vehicles">Vehicles</strong><span data-i18n="ads_1380">1,380 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🏠</div><div class="mega-cat-info"><strong data-i18n="cat_real_estate">Real Estate</strong><span data-i18n="ads_960">960 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🛋️</div><div class="mega-cat-info"><strong data-i18n="cat_home">Home & Living</strong><span data-i18n="ads_1540">1,540 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🎮</div><div class="mega-cat-info"><strong data-i18n="cat_gaming">Gaming</strong><span data-i18n="ads_880">880 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📚</div><div class="mega-cat-info"><strong data-i18n="cat_books">Books</strong><span data-i18n="ads_410">410 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💄</div><div class="mega-cat-info"><strong data-i18n="cat_beauty">Beauty</strong><span data-i18n="ads_720">720 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🔧</div><div class="mega-cat-info"><strong data-i18n="cat_services">Services</strong><span data-i18n="ads_1050">1,050 ads</span></div></a>
+            </div>
+
+            <div class="mega-menu-footer">
+                <a href="categories.html" class="mega-menu-all" data-i18n="view_all_categories">View all categories →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mega-menu-overlay" id="megaMenuOverlay"></div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current" data-i18n="post_ad_breadcrumb">Post an Ad</span>
+        </div>
+    </div>
+
+
+    <!-- POST AD PAGE -->
+    <main class="post-ad-page">
+
+        <div class="post-ad-inner">
+
+            <!-- HEADER -->
+            <div class="post-ad-header">
+                <h1 data-i18n="post_ad_title">Sell something today</h1>
+                <p data-i18n="post_ad_sub">Reach thousands of buyers across Rwanda in just a few minutes.</p>
+            </div>
+
+
+            <!-- STEP PROGRESS -->
+            <div class="post-ad-steps">
+
+                <div class="post-step active" data-step="1">
+                    <div class="post-step-num">1</div>
+                    <div class="post-step-text">
+                        <strong data-i18n="post_step_1">Category</strong>
+                        <span data-i18n="post_step_1_sub">What are you selling?</span>
+                    </div>
+                </div>
+
+                <div class="post-step-line"></div>
+
+                <div class="post-step" data-step="2">
+                    <div class="post-step-num">2</div>
+                    <div class="post-step-text">
+                        <strong data-i18n="post_step_2">Details</strong>
+                        <span data-i18n="post_step_2_sub">Photos & description</span>
+                    </div>
+                </div>
+
+                <div class="post-step-line"></div>
+
+                <div class="post-step" data-step="3">
+                    <div class="post-step-num">3</div>
+                    <div class="post-step-text">
+                        <strong data-i18n="post_step_3">Price & Location</strong>
+                        <span data-i18n="post_step_3_sub">Almost done</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form class="post-ad-form" id="postAdForm">
+
+
+                <!-- ============ ÉTAPE 1 — CATÉGORIE ============ -->
+
+                <section class="post-step-panel active" data-step="1">
+
+                    <div class="post-card">
+
+                        <div class="post-card-header">
+                            <h2 data-i18n="post_step_1_title">What are you selling?</h2>
+                            <p data-i18n="post_step_1_desc">Choose the category that best fits your item or service.</p>
+                        </div>
+
+                        <div class="post-category-grid">
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="phones" required>
+                                <div class="post-category-icon">📱</div>
+                                <span data-i18n="cat_phones">Phones & Tablets</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="electronics">
+                                <div class="post-category-icon">💻</div>
+                                <span data-i18n="cat_electronics">Electronics</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="fashion">
+                                <div class="post-category-icon">👕</div>
+                                <span data-i18n="cat_fashion">Fashion</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="vehicles">
+                                <div class="post-category-icon">🚗</div>
+                                <span data-i18n="cat_vehicles">Vehicles</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="real-estate">
+                                <div class="post-category-icon">🏠</div>
+                                <span data-i18n="cat_real_estate">Real Estate</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="home">
+                                <div class="post-category-icon">🛋️</div>
+                                <span data-i18n="cat_home">Home & Living</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="gaming">
+                                <div class="post-category-icon">🎮</div>
+                                <span data-i18n="cat_gaming">Gaming</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="books">
+                                <div class="post-category-icon">📚</div>
+                                <span data-i18n="cat_books">Books</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="beauty">
+                                <div class="post-category-icon">💄</div>
+                                <span data-i18n="cat_beauty">Beauty</span>
+                            </label>
+
+                            <label class="post-category-card">
+                                <input type="radio" name="category" value="services">
+                                <div class="post-category-icon">🔧</div>
+                                <span data-i18n="cat_services">Services</span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                        <span></span>
+                        <button type="button" class="post-next" data-next="2">
+                            <span data-i18n="post_continue">Continue</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- ============ ÉTAPE 2 — DÉTAILS ============ -->
+
+                <section class="post-step-panel" data-step="2">
+
+                    <div class="post-card">
+
+                        <div class="post-card-header">
+                            <h2 data-i18n="post_step_2_title">Add photos & details</h2>
+                            <p data-i18n="post_step_2_desc">Listings with 3+ photos get 5× more views. Take clear, well-lit shots.</p>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label data-i18n="post_photos_label">Photos <span class="post-required">*</span></label>
+
+                            <div class="post-upload" id="photoUpload">
+                                <input type="file" id="photoInput" accept="image/*" multiple hidden>
+
+                                <div class="post-upload-empty" id="uploadEmpty">
+                                    <div class="post-upload-icon">📷</div>
+                                    <strong data-i18n="post_photos_upload">Click to upload photos</strong>
+                                    <span data-i18n="post_photos_hint">Up to 8 photos · JPG, PNG · Max 5MB each</span>
+                                </div>
+
+                                <div class="post-upload-preview" id="uploadPreview"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label for="adTitle" data-i18n="post_title_label">Ad title <span class="post-required">*</span></label>
+                            <div class="post-input">
+                                <input
+                                    type="text"
+                                    id="adTitle"
+                                    placeholder="e.g. iPhone 13 Pro Max 256GB — Like new"
+                                    data-i18n-placeholder="post_title_placeholder"
+                                    maxlength="80"
+                                    required
+                                >
+                                <span class="post-char-count"><span id="titleCount">0</span>/80</span>
+                            </div>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label for="adDescription" data-i18n="post_desc_label">Description <span class="post-required">*</span></label>
+                            <textarea
+                                id="adDescription"
+                                rows="6"
+                                placeholder="Describe your item: condition, age, features, reason for selling…"
+                                data-i18n-placeholder="post_desc_placeholder"
+                                maxlength="1000"
+                                required
+                            ></textarea>
+                            <span class="post-char-count post-char-bottom"><span id="descCount">0</span>/1000</span>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label data-i18n="post_condition_label">Condition <span class="post-required">*</span></label>
+                            <div class="post-condition-row">
+                                <label class="post-condition">
+                                    <input type="radio" name="condition" value="new" required>
+                                    <div class="post-condition-box">
+                                        <strong data-i18n="post_cond_new">Brand new</strong>
+                                        <span data-i18n="post_cond_new_desc">Never used, sealed</span>
+                                    </div>
+                                </label>
+
+                                <label class="post-condition">
+                                    <input type="radio" name="condition" value="used">
+                                    <div class="post-condition-box">
+                                        <strong data-i18n="post_cond_used">Used</strong>
+                                        <span data-i18n="post_cond_used_desc">Pre-owned, working</span>
+                                    </div>
+                                </label>
+
+                                <label class="post-condition">
+                                    <input type="radio" name="condition" value="refurb">
+                                    <div class="post-condition-box">
+                                        <strong data-i18n="post_cond_refurb">Refurbished</strong>
+                                        <span data-i18n="post_cond_refurb_desc">Restored to like-new</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label for="adBrand"><span data-i18n="post_brand_label">Brand</span> <span class="post-optional" data-i18n="post_optional">(optional)</span></label>
+                            <div class="post-input">
+                                <input
+                                    type="text"
+                                    id="adBrand"
+                                    placeholder="e.g. Apple, Samsung, Nike…"
+                                    data-i18n-placeholder="post_brand_placeholder"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                        <button type="button" class="post-prev" data-prev="1">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span data-i18n="post_back">Back</span>
+                        </button>
+
+                        <button type="button" class="post-next" data-next="3">
+                            <span data-i18n="post_continue">Continue</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!-- ============ ÉTAPE 3 — PRIX & LOCALISATION ============ -->
+
+                <section class="post-step-panel" data-step="3">
+
+                    <div class="post-card">
+
+                        <div class="post-card-header">
+                            <h2 data-i18n="post_step_3_title">Price & location</h2>
+                            <p data-i18n="post_step_3_desc">Set a fair price and let buyers in your area find you.</p>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label for="adPrice" data-i18n="post_price_label">Price <span class="post-required">*</span></label>
+                            <div class="post-input post-input-price">
+                                <span class="post-currency">RWF</span>
+                                <input
+                                    type="number"
+                                    id="adPrice"
+                                    placeholder="e.g. 450000"
+                                    min="0"
+                                    required
+                                >
+                            </div>
+
+                            <label class="post-checkbox">
+                                <input type="checkbox" id="negotiable">
+                                <span data-i18n="post_negotiable">Price is negotiable</span>
+                            </label>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label data-i18n="post_location_label">Location <span class="post-required">*</span></label>
+
+                            <div class="post-row">
+                                <select class="post-select" required>
+                                    <option value="" data-i18n="post_province">Province</option>
+                                    <option data-i18n="location">Kigali</option>
+                                    <option data-i18n="loc_north">Northern Province</option>
+                                    <option data-i18n="loc_south">Southern Province</option>
+                                    <option data-i18n="loc_east">Eastern Province</option>
+                                    <option data-i18n="loc_west">Western Province</option>
+                                </select>
+
+                                <select class="post-select" required>
+                                    <option value="" data-i18n="post_district">District</option>
+                                    <option>Gasabo</option>
+                                    <option>Kicukiro</option>
+                                    <option>Nyarugenge</option>
+                                    <option>Musanze</option>
+                                    <option>Huye</option>
+                                    <option>Rubavu</option>
+                                    <option>Rwamagana</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label for="adPhone" data-i18n="post_phone_label">Phone number <span class="post-required">*</span></label>
+                            <div class="post-input">
+                                <input
+                                    type="tel"
+                                    id="adPhone"
+                                    placeholder="+250 7XX XXX XXX"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+
+                        <div class="post-field">
+                            <label data-i18n="post_options_label">Additional options</label>
+
+                            <label class="post-checkbox">
+                                <input type="checkbox" id="boostAd">
+                                <span data-i18n="post_boost">🚀 Boost this ad for 7 days <strong>(5,000 RWF)</strong></span>
+                            </label>
+
+                            <label class="post-checkbox">
+                                <input type="checkbox" id="acceptRules" required>
+                                <span data-i18n="post_rules">
+                                    I agree to the
+                                    <a href="#" class="auth-inline-link">Posting Rules</a>
+                                    and confirm this is a genuine listing.
+                                </span>
+                            </label>
+                        </div>
+
+
+                        <div class="post-summary">
+                            <h3 data-i18n="post_summary_title">Summary</h3>
+
+                            <div class="post-summary-row">
+                                <span data-i18n="post_summary_category">Category</span>
+                                <strong id="summaryCategory">—</strong>
+                            </div>
+
+                            <div class="post-summary-row">
+                                <span data-i18n="post_summary_fee">Listing fee</span>
+                                <strong data-i18n="post_summary_free">Free</strong>
+                            </div>
+
+                            <div class="post-summary-row" id="boostRow" style="display:none;">
+                                <span data-i18n="post_summary_boost">Boost</span>
+                                <strong>5,000 RWF</strong>
+                            </div>
+
+                            <div class="post-summary-row post-summary-total">
+                                <span data-i18n="post_summary_total">Total</span>
+                                <strong id="summaryTotal">0 RWF</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                        <button type="button" class="post-prev" data-prev="2">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+                            <span data-i18n="post_back">Back</span>
+                        </button>
+
+                        <button type="submit" class="post-submit">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="post_publish">Publish my ad</span>
+                        </button>
+                    </div>
+
+                </section>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="../logo.jpeg" alt="IsokoRW Logo">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Isoko<span>RW</span></h2>
+                        <span class="footer-logo-tagline">Buy. Sell. Trust.</span>
+                    </div>
+                </a>
+
+                <p data-i18n="footer_description">The leading online marketplace in Rwanda for products and services.</p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <a href="../index.html" data-i18n="home">Home</a>
+                <a href="categories.html" data-i18n="categories">Categories</a>
+                <a href="account.html" data-i18n="my_account">My Account</a>
+                <a href="help.html" data-i18n="help_faq">Help / FAQ</a>
+                <a href="help.html" data-i18n="contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_buyers">For Buyers</h3>
+                <a href="help.html" data-i18n="how_it_works">How It Works</a>
+                <a href="help.html" data-i18n="safety_tips">Safety Tips</a>
+                <a href="help.html" data-i18n="return_policy">Return Policy</a>
+                <a href="help.html" data-i18n="payment_methods">Payment Methods</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_sellers">For Sellers</h3>
+                <a href="post-ad.html" data-i18n="become_seller">Become a Seller</a>
+                <a href="help.html" data-i18n="seller_guide">Seller Guide</a>
+                <a href="help.html" data-i18n="pricing">Pricing</a>
+                <a href="verification.html" data-i18n="verification">Verification</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="download_app">Download Our App</h3>
+                <a href="#" class="app-button">▶ Google Play</a>
+                <a href="#" class="app-button">🍎 App Store</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2026 IsokoRW. All rights reserved.</p>
+            <div class="language">
+                🌐 English
+                <span>⌄</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP + SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
+
+    <script>
+        /* ============ STEP NAVIGATION ============ */
+        const stepPanels = document.querySelectorAll(".post-step-panel");
+        const stepIndicators = document.querySelectorAll(".post-step");
+
+        function goToStep(step) {
+            stepPanels.forEach(panel => {
+                panel.classList.toggle("active", panel.dataset.step === String(step));
+            });
+
+            stepIndicators.forEach(ind => {
+                const n = Number(ind.dataset.step);
+                ind.classList.toggle("active", n === step);
+                ind.classList.toggle("done", n < step);
+            });
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        document.querySelectorAll(".post-next").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const current = document.querySelector(".post-step-panel.active");
+                if (!current) return;
+
+                const step = current.dataset.step;
+
+                if (step === "1") {
+                    const cat = document.querySelector("input[name='category']:checked");
+                    if (!cat) {
+                        alert("Please choose a category to continue.");
+                        return;
+                    }
+                }
+
+                if (step === "2") {
+                    const title = document.getElementById("adTitle").value.trim();
+                    const desc = document.getElementById("adDescription").value.trim();
+                    const cond = document.querySelector("input[name='condition']:checked");
+
+                    if (!title || !desc) {
+                        alert("Please add a title and description.");
+                        return;
+                    }
+                    if (!cond) {
+                        alert("Please choose a condition.");
+                        return;
+                    }
+                }
+
+                goToStep(Number(btn.dataset.next));
+            });
+        });
+
+        document.querySelectorAll(".post-prev").forEach(btn => {
+            btn.addEventListener("click", () => {
+                goToStep(Number(btn.dataset.prev));
+            });
+        });
+
+
+        /* ============ CHAR COUNTERS ============ */
+        const adTitle = document.getElementById("adTitle");
+        const titleCount = document.getElementById("titleCount");
+
+        adTitle?.addEventListener("input", () => {
+            titleCount.textContent = adTitle.value.length;
+        });
+
+        const adDesc = document.getElementById("adDescription");
+        const descCount = document.getElementById("descCount");
+
+        adDesc?.addEventListener("input", () => {
+            descCount.textContent = adDesc.value.length;
+        });
+
+
+        /* ============ PHOTO UPLOAD PREVIEW ============ */
+        const photoInput = document.getElementById("photoInput");
+        const uploadPreview = document.getElementById("uploadPreview");
+        const uploadEmpty = document.getElementById("uploadEmpty");
+
+        photoInput?.addEventListener("change", () => {
+            uploadPreview.innerHTML = "";
+            const files = Array.from(photoInput.files).slice(0, 8);
+
+            if (files.length > 0) {
+                uploadEmpty.style.display = "none";
+            } else {
+                uploadEmpty.style.display = "flex";
+            }
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const div = document.createElement("div");
+                    div.className = "post-preview-item";
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="preview">
+                        <button type="button" class="post-preview-remove" aria-label="Remove">×</button>
+                    `;
+                    div.querySelector(".post-preview-remove").addEventListener("click", () => {
+                        div.remove();
+                        if (uploadPreview.children.length === 0) {
+                            uploadEmpty.style.display = "flex";
+                        }
+                    });
+                    uploadPreview.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+
+        /* ============ SUMMARY ============ */
+        const boostAd = document.getElementById("boostAd");
+        const boostRow = document.getElementById("boostRow");
+        const summaryTotal = document.getElementById("summaryTotal");
+
+        function updateSummary() {
+            const total = boostAd?.checked ? 5000 : 0;
+            summaryTotal.textContent = total.toLocaleString("en-US") + " RWF";
+            boostRow.style.display = boostAd?.checked ? "flex" : "none";
+        }
+
+        boostAd?.addEventListener("change", updateSummary);
+        updateSummary();
+
+        /* Update category in summary */
+        document.querySelectorAll("input[name='category']").forEach(radio => {
+            radio.addEventListener("change", () => {
+                const label = radio.closest(".post-category-card").querySelector("span").textContent;
+                const el = document.getElementById("summaryCategory");
+                if (el) el.textContent = label;
+            });
+        });
+
+
+        /* ============ FORM SUBMIT ============ */
+        const postAdForm = document.getElementById("postAdForm");
+
+        postAdForm?.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const rules = document.getElementById("acceptRules").checked;
+            const price = document.getElementById("adPrice").value;
+            const phone = document.getElementById("adPhone").value.trim();
+
+            if (!price || !phone) {
+                alert("Please fill in price and phone number.");
+                return;
+            }
+
+            if (!rules) {
+                alert("Please accept the Posting Rules.");
+                return;
+            }
+
+            alert("🎉 Your ad has been published!\nRedirecting to your listings…");
+        });
+    </script>
+
+</body>
+
+</html>

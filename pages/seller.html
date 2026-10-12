@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Kigali Electronics - Seller Profile - IsokoRW</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span data-i18n="top_bar_promo">🚚 Free listing boost on your first ad</span>
+            <span class="top-bar-sep" data-i18n="top_bar_districts">Now live in 12 districts across Rwanda</span>
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../logo.jpeg" alt="IsokoRW Logo">
+            </div>
+            <div class="logo-text">
+                <h2>Isoko<span>RW</span></h2>
+                <span class="logo-tagline">Buy. Sell. Trust.</span>
+            </div>
+        </a>
+
+        <div class="header-search">
+            <select id="headerCategory" class="header-search-select">
+                <option value="" data-i18n="all_categories">All categories</option>
+                <option value="phones" data-i18n="cat_phones">Phones & Tablets</option>
+                <option value="electronics" data-i18n="cat_electronics">Electronics</option>
+                <option value="fashion" data-i18n="cat_fashion">Fashion</option>
+                <option value="vehicles" data-i18n="cat_vehicles">Vehicles</option>
+                <option value="real-estate" data-i18n="cat_real_estate">Real Estate</option>
+                <option value="home" data-i18n="cat_home">Home & Living</option>
+                <option value="gaming" data-i18n="cat_gaming">Gaming</option>
+                <option value="books" data-i18n="cat_books">Books</option>
+                <option value="beauty" data-i18n="cat_beauty">Beauty</option>
+                <option value="services" data-i18n="cat_services">Services</option>
+            </select>
+
+            <input type="text" placeholder="Search products, brands, or sellers..." id="headerSearch" data-i18n-placeholder="search_placeholder">
+
+            <button type="button" id="headerSearchButton" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+        </div>
+
+        <div class="header-actions">
+            <div class="location" title="Delivery location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+                <span data-i18n="location">Kigali</span>
+                <svg class="chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            <!-- Sélecteur de langue -->
+            <div class="lang-switcher" id="langSwitcher">
+                <button class="icon-button lang-btn" id="langBtn" title="Change language" aria-label="Change language">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span class="lang-current" id="langCurrent">EN</span>
+                </button>
+
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option active" data-lang="en">
+                        <span class="lang-flag">🇬🇧</span>
+                        <div>
+                            <strong>English</strong>
+                            <small>English</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="rw">
+                        <span class="lang-flag">🇷🇼</span>
+                        <div>
+                            <strong>Kinyarwanda</strong>
+                            <small>Ikinyarwanda</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+
+                    <button class="lang-option" data-lang="fr">
+                        <span class="lang-flag">🇫🇷</span>
+                        <div>
+                            <strong>Français</strong>
+                            <small>French</small>
+                        </div>
+                        <span class="lang-check">✓</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bouton Dark Mode -->
+            <button class="icon-button theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="icon-button" title="Notifications">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <a href="messages.html" class="icon-button" title="Messages">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                <span class="notification-badge">3</span>
+            </a>
+
+            <button class="icon-button" title="Favorites">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
+
+            <a href="login.html" class="login-button" data-i18n="login">Log in</a>
+            <a href="register.html" class="signup-button" data-i18n="signup">Sign up</a>
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+
+        <button class="all-categories" id="allCategoriesToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <span data-i18n="all_categories">All Categories</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <a href="products.html" data-i18n="deals">Deals</a>
+            <a href="new-arrivals.html" data-i18n="new_arrivals">New Arrivals</a>
+            <a href="top-rated.html" data-i18n="top_rated">Top Rated</a>
+            <a href="seller.html" class="active" data-i18n="sellers">Sellers</a>
+        </div>
+
+        <a href="post-ad.html" class="post-ad-button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="post_ad">Post an Ad</span>
+        </a>
+
+    </nav>
+
+
+    <!-- MEGA MENU -->
+    <div class="mega-menu" id="megaMenu">
+        <div class="mega-menu-inner">
+            <div class="mega-menu-header">
+                <h3 data-i18n="browse_categories">Browse all categories</h3>
+                <button class="mega-menu-close" id="megaMenuClose" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div class="mega-menu-grid">
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📱</div><div class="mega-cat-info"><strong data-i18n="cat_phones">Phones & Tablets</strong><span data-i18n="ads_3200">3,200 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💻</div><div class="mega-cat-info"><strong data-i18n="cat_electronics">Electronics</strong><span data-i18n="ads_2750">2,750 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">👕</div><div class="mega-cat-info"><strong data-i18n="cat_fashion">Fashion</strong><span data-i18n="ads_4100">4,100 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🚗</div><div class="mega-cat-info"><strong data-i18n="cat_vehicles">Vehicles</strong><span data-i18n="ads_1380">1,380 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🏠</div><div class="mega-cat-info"><strong data-i18n="cat_real_estate">Real Estate</strong><span data-i18n="ads_960">960 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🛋️</div><div class="mega-cat-info"><strong data-i18n="cat_home">Home & Living</strong><span data-i18n="ads_1540">1,540 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🎮</div><div class="mega-cat-info"><strong data-i18n="cat_gaming">Gaming</strong><span data-i18n="ads_880">880 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">📚</div><div class="mega-cat-info"><strong data-i18n="cat_books">Books</strong><span data-i18n="ads_410">410 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">💄</div><div class="mega-cat-info"><strong data-i18n="cat_beauty">Beauty</strong><span data-i18n="ads_720">720 ads</span></div></a>
+                <a href="products.html" class="mega-cat"><div class="mega-cat-icon">🔧</div><div class="mega-cat-info"><strong data-i18n="cat_services">Services</strong><span data-i18n="ads_1050">1,050 ads</span></div></a>
+            </div>
+
+            <div class="mega-menu-footer">
+                <a href="categories.html" class="mega-menu-all" data-i18n="view_all_categories">View all categories →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mega-menu-overlay" id="megaMenuOverlay"></div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="../index.html" data-i18n="home">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="seller.html" data-i18n="sellers">Sellers</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Kigali Electronics</span>
+        </div>
+    </div>
+
+
+    <!-- SELLER PROFILE -->
+    <main class="seller-profile">
+
+        <!-- COVER BANNER -->
+        <div class="seller-cover">
+
+            <div class="seller-cover-overlay"></div>
+
+            <div class="seller-cover-inner">
+
+                <div class="seller-profile-card">
+
+                    <div class="seller-profile-avatar">🏪</div>
+
+                    <div class="seller-profile-info">
+
+                        <div class="seller-profile-top">
+                            <h1>
+                                Kigali Electronics
+                                <span class="seller-profile-badge" data-i18n="seller_badge_verified">✓ Verified</span>
+                            </h1>
+
+                            <button class="seller-follow-btn" id="followBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span data-i18n="follow">Follow</span>
+                            </button>
+                        </div>
+
+                        <p class="seller-profile-meta">
+                            <span class="seller-rating-line">★★★★★ 4.7 (89 <span data-i18n="product_reviews_word">reviews</span>)</span>
+                            <span class="seller-meta-dot">·</span>
+                            <span data-i18n="seller_type_electronic">Electronic Store</span>
+                            <span class="seller-meta-dot">·</span>
+                            <span>📍 Kigali, Gasabo</span>
+                            <span class="seller-meta-dot">·</span>
+                            <span data-i18n="seller_member_since">Member since 2023</span>
+                        </p>
+
+                        <p class="seller-profile-desc" data-i18n="seller_description">
+                            Trusted electronics shop in Kigali. We sell brand new and refurbished
+                            phones, laptops, TVs, and accessories with warranty. Fast delivery
+                            across Rwanda.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS BAR -->
+        <div class="seller-stats-bar">
+
+            <div class="seller-stat">
+                <strong>120+</strong>
+                <span data-i18n="seller_stat_listings">Active listings</span>
+            </div>
+
+            <div class="seller-stat">
+                <strong>4.7 / 5</strong>
+                <span data-i18n="seller_stat_rating">Average rating</span>
+            </div>
+
+            <div class="seller-stat">
+                <strong>89</strong>
+                <span data-i18n="seller_stat_reviews">Reviews</span>
+            </div>
+
+            <div class="seller-stat">
+                <strong>~2 <span data-i18n="seller_hours">hours</span></strong>
+                <span data-i18n="seller_stat_response">Response time</span>
+            </div>
+
+            <div class="seller-stat">
+                <strong>1,240</strong>
+                <span data-i18n="seller_stat_followers">Followers</span>
+            </div>
+
+        </div>
+
+
+        <!-- CONTENT GRID -->
+        <div class="seller-content">
+
+            <section class="seller-main">
+
+                <!-- Tabs -->
+                <div class="seller-tabs">
+                    <button class="seller-tab active" data-tab="listings"><span data-i18n="seller_tab_listings">Listings</span> <span>120</span></button>
+                    <button class="seller-tab" data-tab="reviews"><span data-i18n="seller_tab_reviews">Reviews</span> <span>89</span></button>
+                    <button class="seller-tab" data-tab="about" data-i18n="seller_tab_about">About</button>
+                </div>
+
+
+                <!-- TAB : LISTINGS -->
+                <div class="seller-tab-panel active" data-panel="listings">
+
+                    <div class="seller-toolbar">
+
+                        <div class="seller-toolbar-sort">
+                            <label for="sellerSort" data-i18n="sort_by">Sort by:</label>
+                            <select id="sellerSort">
+                                <option data-i18n="sort_newest">Newest first</option>
+                                <option data-i18n="sort_price_asc">Price: low → high</option>
+                                <option data-i18n="sort_price_desc">Price: high → low</option>
+                                <option data-i18n="sort_rating">Top rated</option>
+                            </select>
+                        </div>
+
+                        <div class="seller-toolbar-filter">
+                            <button class="seller-chip active" data-i18n="tab_all">All</button>
+                            <button class="seller-chip" data-i18n="filter_phones">Phones</button>
+                            <button class="seller-chip" data-i18n="filter_laptops">Laptops</button>
+                            <button class="seller-chip" data-i18n="filter_accessories">Accessories</button>
+                            <button class="seller-chip" data-i18n="filter_tvs">TVs</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="seller-listings-grid" id="sellerListingsGrid">
+                        <!-- Rempli dynamiquement par app.js -->
+                    </div>
+
+                    <div class="seller-load-more">
+                        <button class="seller-load-more-btn" data-i18n="seller_load_more">Load more listings</button>
+                    </div>
+
+                </div>
+
+
+                <!-- TAB : REVIEWS -->
+                <div class="seller-tab-panel" data-panel="reviews">
+
+                    <div class="seller-reviews-summary">
+
+                        <div class="seller-reviews-big">
+                            <strong>4.7</strong>
+                            <div class="seller-reviews-stars">★★★★★</div>
+                            <span>89 <span data-i18n="product_reviews_word">reviews</span></span>
+                        </div>
+
+                        <div class="seller-reviews-bars">
+
+                            <div class="seller-review-bar">
+                                <span>5★</span>
+                                <div class="seller-bar-track"><div class="seller-bar-fill" style="width: 78%"></div></div>
+                                <span>69</span>
+                            </div>
+
+                            <div class="seller-review-bar">
+                                <span>4★</span>
+                                <div class="seller-bar-track"><div class="seller-bar-fill" style="width: 15%"></div></div>
+                                <span>13</span>
+                            </div>
+
+                            <div class="seller-review-bar">
+                                <span>3★</span>
+                                <div class="seller-bar-track"><div class="seller-bar-fill" style="width: 5%"></div></div>
+                                <span>5</span>
+                            </div>
+
+                            <div class="seller-review-bar">
+                                <span>2★</span>
+                                <div class="seller-bar-track"><div class="seller-bar-fill" style="width: 2%"></div></div>
+                                <span>2</span>
+                            </div>
+
+                            <div class="seller-review-bar">
+                                <span>1★</span>
+                                <div class="seller-bar-track"><div class="seller-bar-fill" style="width: 0%"></div></div>
+                                <span>0</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="seller-reviews-list">
+
+                        <article class="seller-review">
+                            <div class="seller-review-header">
+                                <div class="seller-review-avatar">A</div>
+                                <div class="seller-review-meta">
+                                    <strong>Aline U.</strong>
+                                    <span>★★★★★ · <span data-i18n="time_2weeks_ago">2 weeks ago</span></span>
+                                </div>
+                            </div>
+                            <p data-i18n="product_review_1">Very fast delivery and the phone was exactly as described. Highly recommend!</p>
+                        </article>
+
+                        <article class="seller-review">
+                            <div class="seller-review-header">
+                                <div class="seller-review-avatar">J</div>
+                                <div class="seller-review-meta">
+                                    <strong>Jean P.</strong>
+                                    <span>★★★★★ · <span data-i18n="time_1month_ago">1 month ago</span></span>
+                                </div>
+                            </div>
+                            <p data-i18n="seller_review_2">Good communication, fair price. The MacBook works perfectly. Will buy again.</p>
+                        </article>
+
+                        <article class="seller-review">
+                            <div class="seller-review-header">
+                                <div class="seller-review-avatar">M</div>
+                                <div class="seller-review-meta">
+                                    <strong>Marie K.</strong>
+                                    <span>★★★★☆ · <span data-i18n="time_1month_ago">1 month ago</span></span>
+                                </div>
+                            </div>
+                            <p data-i18n="seller_review_3">Product was good but delivery took a bit longer than expected.</p>
+                        </article>
+
+                        <article class="seller-review">
+                            <div class="seller-review-header">
+                                <div class="seller-review-avatar">E</div>
+                                <div class="seller-review-meta">
+                                    <strong>Eric N.</strong>
+                                    <span>★★★★★ · <span data-i18n="time_2months_ago">2 months ago</span></span>
+                                </div>
+                            </div>
+                            <p data-i18n="seller_review_4">Trusted seller. Bought a TV and it came with warranty as promised. 👍</p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAB : ABOUT -->
+                <div class="seller-tab-panel" data-panel="about">
+
+                    <div class="seller-about">
+
+                        <h3 data-i18n="seller_about_title">About Kigali Electronics</h3>
+
+                        <p data-i18n="seller_about_p1">
+                            Kigali Electronics is a trusted electronics shop based in Gasabo, Kigali.
+                            We've been serving Rwandan customers since 2023, offering a wide selection
+                            of brand-new and refurbished phones, laptops, TVs, and accessories.
+                        </p>
+
+                        <p data-i18n="seller_about_p2">
+                            Our mission is simple: provide quality electronics at fair prices,
+                            with excellent after-sales support. Every product we sell comes
+                            with a warranty and free technical support.
+                        </p>
+
+
+                        <div class="seller-about-grid">
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_location">📍 Location</h4>
+                                <p>KG 11 Ave, Gasabo, Kigali, Rwanda</p>
+                            </div>
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_hours">🕐 Opening hours</h4>
+                                <p data-i18n="seller_about_hours_value">Mon–Sat: 8:00 – 19:00 · Sun: Closed</p>
+                            </div>
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_phone">📞 Phone</h4>
+                                <p>+250 788 123 456</p>
+                            </div>
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_email">✉️ Email</h4>
+                                <p>contact@kigalielectronics.rw</p>
+                            </div>
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_delivery">🚚 Delivery</h4>
+                                <p data-i18n="seller_about_delivery_value">Free within Kigali · Paid nationwide</p>
+                            </div>
+
+                            <div class="seller-about-item">
+                                <h4 data-i18n="seller_about_payment">💳 Payment</h4>
+                                <p data-i18n="seller_about_payment_value">Cash · MoMo · Bank transfer</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SIDEBAR -->
+            <aside class="seller-sidebar">
+
+                <div class="seller-sidebar-card">
+
+                    <h3 data-i18n="seller_contact_title">Contact seller</h3>
+
+                    <button class="seller-contact-btn seller-contact-primary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+                        <span data-i18n="seller_send_message">Send a message</span>
+                    </button>
+
+                    <button class="seller-contact-btn seller-contact-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+                        <span data-i18n="product_show_phone">Show phone number</span>
+                    </button>
+
+                    <p class="seller-contact-note" data-i18n="seller_response_time">
+                        Usually responds within 2 hours
+                    </p>
+
+                </div>
+
+
+                <div class="seller-sidebar-card seller-verify-card">
+
+                    <div class="seller-verify-icon">✓</div>
+
+                    <h3 data-i18n="seller_verified_title">Verified seller</h3>
+
+                    <p data-i18n="seller_verified_desc">This seller has completed ID verification and a phone check with our team.</p>
+
+                    <ul class="seller-verify-list">
+                        <li data-i18n="seller_verify_id">✓ ID verified</li>
+                        <li data-i18n="seller_verify_phone">✓ Phone verified</li>
+                        <li data-i18n="seller_verify_email">✓ Email verified</li>
+                        <li data-i18n="seller_verify_address">✓ Address confirmed</li>
+                    </ul>
+
+                    <a href="verification.html" class="seller-verify-link" data-i18n="seller_verify_learn">
+                        Learn more about verification →
+                    </a>
+
+                </div>
+
+
+                <div class="seller-sidebar-card">
+
+                    <h3 data-i18n="seller_safety_title">Safety tips</h3>
+
+                    <ul class="seller-safety-list">
+                        <li data-i18n="seller_safety_1">Meet in a public place</li>
+                        <li data-i18n="seller_safety_2">Check the item before paying</li>
+                        <li data-i18n="seller_safety_3">Never send money in advance</li>
+                        <li data-i18n="seller_safety_4">Report suspicious sellers</li>
+                    </ul>
+
+                    <a href="help.html" class="seller-verify-link" data-i18n="seller_safety_read">
+                        Read full safety guide →
+                    </a>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <img src="../logo.jpeg" alt="IsokoRW Logo">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Isoko<span>RW</span></h2>
+                        <span class="footer-logo-tagline">Buy. Sell. Trust.</span>
+                    </div>
+                </a>
+                <p data-i18n="footer_description">The leading online marketplace in Rwanda for products and services.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="#" aria-label="Instagram">◎</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="quick_links">Quick Links</h3>
+                <a href="../index.html" data-i18n="home">Home</a>
+                <a href="categories.html" data-i18n="categories">Categories</a>
+                <a href="account.html" data-i18n="my_account">My Account</a>
+                <a href="help.html" data-i18n="help_faq">Help / FAQ</a>
+                <a href="help.html" data-i18n="contact">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_buyers">For Buyers</h3>
+                <a href="help.html" data-i18n="how_it_works">How It Works</a>
+                <a href="help.html" data-i18n="safety_tips">Safety Tips</a>
+                <a href="help.html" data-i18n="return_policy">Return Policy</a>
+                <a href="help.html" data-i18n="payment_methods">Payment Methods</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="for_sellers">For Sellers</h3>
+                <a href="post-ad.html" data-i18n="become_seller">Become a Seller</a>
+                <a href="help.html" data-i18n="seller_guide">Seller Guide</a>
+                <a href="help.html" data-i18n="pricing">Pricing</a>
+                <a href="verification.html" data-i18n="verification">Verification</a>
+            </div>
+
+            <div class="footer-column">
+                <h3 data-i18n="download_app">Download Our App</h3>
+                <a href="#" class="app-button">▶ Google Play</a>
+                <a href="#" class="app-button">🍎 App Store</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2026 IsokoRW. All rights reserved.</p>
+            <div class="language">
+                🌐 English
+                <span>⌄</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP + SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+
+    <!-- SCRIPTS -->
+    <script src="../data.js"></script>
+    <script src="../translations.js"></script>
+    <script src="../app.js"></script>
+    <script src="../script.js"></script>
+
+    <script>
+        /* ============ FOLLOW BUTTON ============ */
+        const followBtn = document.getElementById("followBtn");
+
+        if (followBtn) {
+            followBtn.addEventListener("click", () => {
+                followBtn.classList.toggle("following");
+
+                const span = followBtn.querySelector("span");
+
+                if (followBtn.classList.contains("following")) {
+                    span.textContent = "Following";
+                } else {
+                    span.textContent = "Follow";
+                }
+            });
+        }
+
+
+        /* ============ TABS ============ */
+        const tabs = document.querySelectorAll(".seller-tab");
+        const panels = document.querySelectorAll(".seller-tab-panel");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+
+                const target = tab.getAttribute("data-tab");
+
+                panels.forEach(panel => {
+                    panel.classList.toggle("active", panel.getAttribute("data-panel") === target);
+                });
+            });
+        });
+
+
+        /* ============ FILTER CHIPS ============ */
+        const chips = document.querySelectorAll(".seller-chip");
+
+        chips.forEach(chip => {
+            chip.addEventListener("click", () => {
+                chips.forEach(c => c.classList.remove("active"));
+                chip.classList.add("active");
+            });
+        });
+
+
+        /* ============ GRILLE PRODUITS DYNAMIQUE ============ */
+        document.addEventListener("DOMContentLoaded", () => {
+
+            if (typeof ISOKO !== "undefined") {
+                ISOKO.renderSellerProducts("sellerListingsGrid", 1);
+                ISOKO.markFavoritesAsActive();
+                ISOKO.updateFavoritesCount();
+            }
+
+            if (typeof applyLanguage === "function") {
+                const lang = localStorage.getItem("isokorw-lang") || "en";
+                applyLanguage(lang);
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
